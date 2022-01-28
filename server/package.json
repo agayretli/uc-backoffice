@@ -1,0 +1,57 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "build": "tsc",
+    "prod": "concurrently \"npm run build --prefix ../client\" \"ts-node server.ts\"",
+    "server": "nodemon --verbose --watch \"server\" --ext \"ts,json\" --exec ts-node server.ts",
+    "dev": "concurrently \"npm run build --prefix ../client\" \"npm start --prefix ../client\" \"npm run server\"",
+    "prepare": "cd ../ && husky install ./server/.husky",
+    "prettier:check": "prettier --check \"app/**/*.ts\"",
+    "prettier:fix": "prettier --write \"app/**/*.ts\"",
+    "eslint:check": "eslint --ext .ts .",
+    "eslint:fix": "eslint --fix --ext .ts .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.13",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lint-staged": "^12.1.2",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1",
+    "ts-jest": "^27.1.2"
+  },
+  "lint-staged": {
+      "**/*.{js,ts,jsx,tsx}": [
+          "eslint --fix",
+          "prettier --write"
+      ]
+  },
+  "keywords": [],
+  "author": "agayretli",
+  "license": "ISC"
+}

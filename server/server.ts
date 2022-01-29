@@ -6,6 +6,7 @@ import path from 'path';
 import { ConnectOptions } from 'mongoose';
 
 import db from './src/models';
+import routes from './src/routes';
 
 dotenv.config();
 const app = express();
@@ -28,6 +29,8 @@ app.get('/api', (req: any, res: { json: (arg0: { message: string }) => void }) =
 app.get('*', (req: any, res: { sendFile: (arg0: any) => void }) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
+// Added routes to express
+routes(app);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);

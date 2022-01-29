@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import path from 'path';
+import { ConnectOptions } from 'mongoose';
+
+import db from './src/models';
 
 dotenv.config();
 const app = express();
@@ -28,3 +31,15 @@ app.get('*', (req: any, res: { sendFile: (arg0: any) => void }) => {
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
+
+// Mongo DB conncetion
+const database = process.env.MONGOLAB_URI;
+db.mongoose.connect(
+    database as string,
+    {
+        // `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    } as ConnectOptions
+);
+db.initial();

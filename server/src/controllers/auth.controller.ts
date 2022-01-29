@@ -83,8 +83,6 @@ const signin = (
                     email?: any;
                     lang?: any;
                     role?: any;
-                    hotelId?: any;
-                    customerId?: any;
                     userData?: any;
                     session?: any;
                 }): void;
@@ -108,8 +106,6 @@ const signin = (
                     name: any;
                     email: any;
                     lang: any;
-                    hotelId: any;
-                    customerId: any;
                 }
             ) => {
                 if (err) {
@@ -140,8 +136,6 @@ const signin = (
                         email: user.email,
                         lang: user.lang,
                         role: `ROLE_${user.roleId.name.toUpperCase()}`,
-                        hotelId: user.hotelId,
-                        customerId: user.customerId,
                     },
                     session: {
                         accessToken: token,
@@ -167,8 +161,6 @@ const profile = (
                     role?: any;
                     reload?: any;
                     userData?: any;
-                    hotelId?: any;
-                    customerId?: any;
                 }): void;
                 new (): any;
             };
@@ -190,8 +182,6 @@ const profile = (
                     email: any;
                     roleId: any;
                     lang: any;
-                    hotelId: any;
-                    customerId: any;
                     save: (arg0: { (err: any): void; (err: any): void }) => void;
                 }
             ) => {
@@ -228,8 +218,6 @@ const profile = (
                             email: user.email,
                             lang: user.lang,
                             role: `ROLE_${user.roleId.name.toUpperCase()}`,
-                            hotelId: user.hotelId,
-                            customerId: user.customerId,
                         },
                         message: 'User was updated successfully!',
                         reload: reloadAfterSave,

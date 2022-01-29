@@ -7,6 +7,7 @@ import { ConnectOptions } from 'mongoose';
 
 import db from './src/models';
 import routes from './src/routes';
+import SocketClient from './src/controllers/socket.controller';
 
 dotenv.config();
 const app = express();
@@ -31,6 +32,9 @@ app.get('*', (req: any, res: { sendFile: (arg0: any) => void }) => {
 });
 // Added routes to express
 routes(app);
+
+const socketClient: SocketClient = SocketClient.getInstance();
+socketClient.init();
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);

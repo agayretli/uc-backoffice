@@ -28,10 +28,6 @@ const UserSchema = new mongoose.Schema(
         passwordResetTokenDt: {
             type: Date,
         },
-        isGdprAccepted: {
-            type: Boolean,
-            default: false,
-        },
     },
     { timestamps: true }
 );

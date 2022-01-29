@@ -19,7 +19,7 @@ export default class SocketClient {
     }
 
     init() {
-        this.socket = io('ws://localhost:5000/', {});
+        this.socket = io('ws://localhost:5000', {});
         this.bindEvents();
     }
 

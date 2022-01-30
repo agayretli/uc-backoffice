@@ -23,7 +23,7 @@ export default class SocketClient {
         this.bindEvents();
     }
 
-    bindEvents() {
+    private bindEvents() {
         this.socket.on('connection', () => {
             console.log(`connection ${this.socket.id}`);
         });
@@ -43,7 +43,6 @@ export default class SocketClient {
 
     async sendEmailOnLogin(email: string) {
         this.socket.emit('sendEmailOnLogin', email);
-        // await this.delay(3000);
         this.getActiveUsers();
     }
 
@@ -52,11 +51,5 @@ export default class SocketClient {
             console.log(`user emails ${response.users}`);
             console.log(response);
         });
-    }
-
-    // eslint-disable-next-line class-methods-use-this
-    delay(ms: number) {
-        // eslint-disable-next-line no-promise-executor-return
-        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }

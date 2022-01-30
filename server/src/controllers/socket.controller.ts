@@ -41,11 +41,22 @@ export default class SocketClient {
         });
     }
 
-    sendEmailOnLogin(email: string) {
+    async sendEmailOnLogin(email: string) {
         this.socket.emit('sendEmailOnLogin', email);
+        // await this.delay(3000);
+        this.getActiveUsers();
     }
 
-    is_connected() {
-        return this.socket.is_connected; // TODO
+    async getActiveUsers() {
+        await this.socket.emit('getActiveUsers', (response: { users: any }) => {
+            console.log(`user emails ${response.users}`);
+            console.log(response);
+        });
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    delay(ms: number) {
+        // eslint-disable-next-line no-promise-executor-return
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }

@@ -32,9 +32,17 @@ export default class SocketClient {
             console.log(`error: ${err}`);
         });
 
+        this.socket.on('userLogin', (email: string) => {
+            console.log(email);
+        });
+
         this.socket.on('disconnect', () => {
             console.log('disconnect');
         });
+    }
+
+    sendEmailOnLogin(email: string) {
+        this.socket.emit('sendEmailOnLogin', email);
     }
 
     is_connected() {

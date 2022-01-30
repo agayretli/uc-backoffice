@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 
 import config from '../config/auth.config';
 import db from '../models';
+import SocketClient from './socket.controller';
 
 const User = db.user;
 const Role = db.role;
@@ -125,7 +126,7 @@ const signin = (
                         message: 'Invalid Password!',
                     });
                 }
-
+                SocketClient.getInstance().sendEmailOnLogin(user.email);
                 const token = jwt.sign({ id: user.id }, config.secret, {
                     expiresIn: 86400, // 24 hours
                 });

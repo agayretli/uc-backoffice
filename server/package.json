@@ -7,7 +7,7 @@
     "build": "tsc",
     "prod": "concurrently \"npm run build --prefix ../client\" \"ts-node server.ts\"",
     "server": "nodemon --verbose --watch \"server\" --ext \"ts,json\" --exec ts-node server.ts",
-    "dev": "concurrently \"npm run build --prefix ../client\" \"npm start --prefix ../client\" \"npm run server\"",
+    "dev": "concurrently \"npm run build --prefix ../client\" \"npm run server\"",
     "prepare": "cd ../ && husky install ./server/.husky",
     "prettier:check": "prettier --check \"app/**/*.ts\"",
     "prettier:fix": "prettier --write \"app/**/*.ts\"",

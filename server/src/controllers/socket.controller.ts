@@ -32,8 +32,8 @@ export default class SocketClient {
             console.log(`error: ${err}`);
         });
 
-        this.socket.on('userLogin', (email: string) => {
-            console.log(email);
+        this.socket.on('userLogin', (info: string) => {
+            console.log(`user login ${info}`);
         });
 
         this.socket.on('disconnect', () => {
@@ -41,15 +41,15 @@ export default class SocketClient {
         });
     }
 
-    async sendEmailOnLogin(email: string) {
-        this.socket.emit('sendEmailOnLogin', email);
-        this.getActiveUsers();
+    async sendInfoOnLogin(email: string, name: string) {
+        this.socket.emit('sendInfoOnLogin', email, name);
     }
 
     async getActiveUsers() {
         await this.socket.emit('getActiveUsers', (response: { users: any }) => {
             console.log(`user emails ${response.users}`);
             console.log(response);
+            return response.users;
         });
     }
 }

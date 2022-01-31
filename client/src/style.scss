@@ -1,0 +1,196 @@
+@import '~bootstrap/scss/bootstrap';
+
+/* COLORS */
+$gray: #f1f2f5;
+$shadow: rgba(0, 0, 0, 0.25);
+$primary: #3498db;
+$dark: #212121;
+
+.bg-darker {
+    background: var(--bs-gray-800);
+}
+
+body {
+    font-size: 14px;
+
+    > div:first-of-type {
+        min-height: 100%;
+        background-color: #277a5f;
+    }
+}
+
+menu {
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    background-color: $gray;
+
+    menu {
+        box-shadow: 0 0 10px 0 $shadow;
+        background-color: var(--bs-gray-800);
+        color: $primary !important;
+
+        .active {
+            background-color: #ffffff;
+        }
+
+        .logo {
+            display: block;
+            text-align: center;
+            padding: 5px;
+
+            img {
+                width: 80%;
+            }
+        }
+    }
+
+    .sidebar {
+        width: 6.5rem;
+        min-height: 100vh;
+    }
+
+    @media (min-width: 768px) {
+        .sidebar {
+            width: 14rem !important;
+        }
+    }
+
+    .wrapper {
+        flex: 1 0 0;
+    }
+}
+
+header {
+    box-shadow: 0 0 3px 0 $shadow;
+    background: $gray;
+
+    a {
+        color: $dark;
+    }
+}
+
+.form-control-dark {
+    background-color: var(--bs-dark);
+    border-color: var(--bs-gray);
+    color: #ffffff;
+}
+
+// It helps us to create a related designs for tab-panes
+.radial-bordered {
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #dee2e6;
+    border-top: 0;
+}
+
+.device-modal-main {
+    height: 30vh;
+
+    form > footer > input {
+        width: 4vw;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%, -20%);
+    }
+
+    form {
+        margin-top: 2vh;
+
+        > div:first-child {
+            margin-bottom: 2vh;
+
+            > div {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            button.btn {
+                width: 2.3vw;
+                height: 4.6vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: -2.35vw;
+                padding: 0;
+                border: 3px solid #353535;
+                background-color: #ffffff;
+                transition: all 0.3s ease-in-out;
+
+                &:hover,
+                &:focus {
+                    background-color: #353535;
+                }
+            }
+        }
+    }
+}
+
+.modal-header > div {
+    font-size: 2.3vh;
+}
+
+.modal-body {
+    flex: auto !important;
+    margin: 0;
+    padding: 0 4rem !important;
+}
+
+/* Removes tooltips on hover since these tooltips are not placed correctly
+All tooltips are placed on the left of the page unless these styles are applied */
+.MuiTooltip-popper {
+    display: none;
+}
+
+// Change divider opacity to 1
+.MuiDivider-root {
+    opacity: 1;
+}
+
+// To hide overflow in add device modal
+.MuiDialog-paper {
+    overflow: hidden;
+}
+
+/* Remove effect on hover since it displays buttons as an ellipse */
+.MuiIconButton-root:hover {
+    background: transparent !important;
+}
+
+/* Remove box shadow effect for material ui components have elevation of 2 */
+.MuiPaper-elevation2 {
+    box-shadow: none !important;
+}
+
+/* Customize borders for tables */
+.MuiPaper-root tr {
+    border: 1px solid rgba(224, 224, 224, 1);
+    border-top: 0;
+}
+
+.MuiPaper-root thead tr:first-child {
+    border-top: 1px solid rgba(224, 224, 224, 1);
+}
+
+.MuiPaper-root tr:last-child {
+    border-bottom: 0;
+}
+
+/* Give padding of 5px for buttons in table cell */
+.MuiTableCell-body .MuiIconButton-root {
+    padding: 5px;
+}
+
+/* Reset margin and padding in table toolbar */
+.MuiToolbar-root {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .MuiIconButton-root {
+        padding: 0;
+    }
+}

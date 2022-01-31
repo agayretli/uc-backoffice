@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 import db from '../models';
+import SocketClient from './socket.controller';
 
 const User = db.user;
 
@@ -16,6 +17,27 @@ const datatablesAll = async (
 ) => {
     try {
         const users = await User.find({});
+        res.status(200).send({
+            users,
+            message: 'Success.',
+        });
+    } catch (error) {
+        res.status(404).send({ message: 'User not found.' });
+    }
+};
+
+const getActiveUsers = async (
+    req: any,
+    res: {
+        status: (arg0: number) => {
+            send: {
+                (arg0: { message?: any; users?: any }): void;
+            };
+        };
+    }
+) => {
+    try {
+        const users = await SocketClient.getInstance().getActiveUsers();
         res.status(200).send({
             users,
             message: 'Success.',
@@ -145,6 +167,7 @@ const changeLang = async (
 
 export default {
     datatablesAll,
+    getActiveUsers,
     insert,
     remove,
     update,

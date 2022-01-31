@@ -3,6 +3,7 @@ import verifySignUp from '../middlewares/verifySignUp';
 
 export default function (app: any) {
     app.post('/api/users', userController.datatablesAll);
+    app.post('/api/user/actives', userController.getActiveUsers);
     app.post(
         '/api/user/insert',
         [verifySignUp.checkDuplicateEmail, verifySignUp.checkRoleExisted],

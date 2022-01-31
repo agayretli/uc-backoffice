@@ -1,0 +1,79 @@
+// COLORS
+$login-input-border: #111111;
+$invalid-input: #c1121f;
+$form-control: #1a1a1a;
+
+html,
+body {
+    height: 100%;
+}
+
+body > div:first-of-type {
+    display: flex;
+    justify-content: center;
+    color: #2d8b49;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+}
+
+.form-signin {
+    position: relative;
+    top: -50px;
+    width: 100%;
+    max-width: 500px;
+    padding: 50px 15px;
+    box-shadow: rgba(1, 1, 1, 0.1) 0 2px 2px, rgba(1, 1, 1, 0.1) 0 4px 4px, rgba(1, 1, 1, 0.3) 0 8px 8px,
+        rgba(1, 1, 1, 0.3) 0 16px 16px, rgba(1, 1, 1, 0.2) 0 32px 32px, rgba(1, 1, 1, 0.2) 0 64px 64px;
+    background-image: radial-gradient(
+        circle farthest-corner at 4.2% 8%,
+        rgb(40, 40, 40) 0%,
+        rgb(10, 10, 10) 36.4%,
+        rgb(10, 10, 10) 90.1%
+    );
+    border: 2px solid $login-input-border;
+    border-bottom: 8px solid $login-input-border;
+    color: #1d2e8b;
+
+    input:placeholder-shown,
+    input:invalid:not([type='checkbox']):not([type='submit']) {
+        border: 2px solid $invalid-input;
+    }
+
+    form:invalid input[type='submit'] {
+        pointer-events: none;
+    }
+
+    form > p {
+        color: $invalid-input;
+    }
+
+    .checkbox {
+        font-weight: 400;
+    }
+
+    .form-control {
+        background-color: $form-control;
+        border: 2px none $form-control;
+        color: #358d41;
+        transition: all 0.3s;
+    }
+
+    .form-control:focus {
+        z-index: 2;
+        box-shadow: none;
+        border: 2px solid $form-control;
+        outline: 0;
+    }
+
+    &::after {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        color: #ffffff;
+        content: '';
+    }
+}
